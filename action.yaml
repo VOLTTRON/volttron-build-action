@@ -1,4 +1,4 @@
-name: 'Run Volttron Tests'
+name: 'Volttron Build Action'
 author: Mark Bonicillo
 description: 'Runs Volttron tests suite using Pytest'
 branding:
