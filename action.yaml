@@ -1,5 +1,5 @@
 name: 'Run Volttron Tests'
-auther: Mark Bonicillo
+author: Mark Bonicillo
 description: 'Runs Volttron tests suite using Pytest'
 branding:
   icon: zap

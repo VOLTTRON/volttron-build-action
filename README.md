@@ -31,11 +31,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Run pytest on ${{ matrix.python-version }}, ${{ matrix.os }}
-        uses: bonicim/run-tests-volttron@v0.2-beta
+        uses: volttron/volttron-build-action@v1
         with:
             python_version: ${{ matrix.python-version }}
             os: ${{ matrix.os }}
-
             test_path: volttrontesting/testutils
             test_output_suffix: testutils
 ````
