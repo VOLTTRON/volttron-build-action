@@ -1,6 +1,7 @@
 # Run Volttron Tests
 
-A GitHub Action that sets up a Volttron test environment and runs the Volttron suite of tests. 
+A GitHub Action that sets up a Volttron test environment and runs a user-specified suite of VOLTTRON tests. 
+
 
 ## Example
 
@@ -30,12 +31,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Run pytest on ${{ matrix.python-version }}, ${{ matrix.os }}
-        uses: bonicim/run-tests-volttron@v0.2-beta
+        uses: volttron/volttron-build-action@v1
         with:
             python_version: ${{ matrix.python-version }}
             os: ${{ matrix.os }}
-            test_path: 'volttrontesting/testutils'
-            test_output_suffix: 'testutils'
+            test_path: volttrontesting/testutils
+            test_output_suffix: testutils
 ````
 
 ## Inputs
@@ -47,7 +48,9 @@ The operating system used to run the tests. The os's are virtual environments pr
 The version of Python that will be used to setup and run the Volttron tests. To know more about testing different versions of Python in GitHub Actions, see: https://docs.github.com/en/actions/guides/building-and-testing-python
 
 ### `test_path`
-The path to a directory or file that contains Volttron-specific tests from the [Volttron repo](https://github.com/VOLTTRON/volttron)
+
+The path to a directory or file that contains Volttron-specific tests from the [Volttron repo](https://github.com/VOLTTRON/volttron).
+
 
 ### `test_output_suffix`
 The suffix to be appended to the name of the output file generated from running Volttron tests.
