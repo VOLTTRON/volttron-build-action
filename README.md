@@ -1,6 +1,6 @@
 # Run Volttron Tests
 
-A GitHub Action that sets up a Volttron test environment and runs a user-specified Volttron suite of tests. 
+A GitHub Action that sets up a Volttron test environment and runs a user-specified suite of VOLTTRON tests. 
 
 
 ## Example
