@@ -39,6 +39,8 @@ runs:
           echo 'Installing all volttron dependencies and RMQ'
           pip install wheel
           python bootstrap.py --all --rabbitmq --force
+          # Until the requirements.py install this here.
+          pip install pytest-rerunfailures
         fi
       shell: bash
       env:
@@ -51,6 +53,8 @@ runs:
           echo 'Installing all Volttron dependencies but NOT RMQ'
           pip install wheel
           python bootstrap.py --all --force
+          # Until the requirements.py install this here.
+          pip install pytest-rerunfailures
         fi
       shell: bash
       env:
@@ -68,7 +72,8 @@ runs:
         source env/bin/activate
         pip install -e .
         echo "the test path $TEST_PATH and $TEST_OUTPUT_SUFFIX"
-        pytest "$TEST_PATH" -rf -o junit_family=xunit2 --junitxml=output/test-$TEST_OUTPUT_SUFFIX-${{ inputs.os }}-${{ inputs.python_version }}-results.xml
+        pytest "$TEST_PATH" --reruns 5 -rf -o junit_family=xunit2 \
+            --junitxml=output/test-$TEST_OUTPUT_SUFFIX-${{ inputs.os }}-${{ inputs.python_version }}-results.xml
       shell: bash
       env:
         TEST_PATH: ${{ inputs.test_path }}
