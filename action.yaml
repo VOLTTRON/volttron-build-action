@@ -26,8 +26,24 @@ runs:
     - name: Install Erlang for RabbitMQ
       run: |
         if [[ "$OS" == 'ubuntu-20.04' ]]; then
+          echo 'Installing erlang dependencies'
+          sudo apt-get update
+          sudo apt-get install -y gnupg apt-transport-https libsctp1
+          echo 'Clean older version of erlang-base'
+          sudo apt-get purge -yf erlang-base
           echo 'Installing erlang'
-          sudo scripts/rabbit_dependencies.sh debian focal
+          wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+          sudo dpkg -i esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+        fi
+        if [[ "$OS" == 'ubuntu-22.04' ]]; then
+          echo 'Installing erlang dependencies'
+          sudo apt-get update
+          sudo apt-get install -y gnupg apt-transport-https libsctp1
+          echo 'Clean older version of erlang-base'
+          sudo apt-get purge -yf erlang-base
+          echo 'Installing erlang'
+          wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+          sudo dpkg -i esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
         fi
       shell: bash
       env:
@@ -35,7 +51,7 @@ runs:
 
     - name: Install dependencies including rmq
       run: |
-        if [[ ! -f "$FILE" ]] && [[ "$OS" == 'ubuntu-20.04' ]]; then
+        if [[ ! -f "$FILE" ]] && [[ "$OS" == 'ubuntu-20.04' || "$OS" == 'ubuntu-22.04' ]]; then
           echo 'Installing all volttron dependencies and RMQ'
           pip install wheel
           python bootstrap.py --all --rabbitmq --force
@@ -47,7 +63,7 @@ runs:
 
     - name: Install dependencies other than rmq
       run: |
-        if [[ ! -f "$FILE" ]] && [[ "$OS" != 'ubuntu-20.04' ]]; then
+        if [[ ! -f "$FILE" ]] && [[ "$OS" != 'ubuntu-20.04' && "$OS" != 'ubuntu-22.04' ]]; then
           echo 'Installing all Volttron dependencies but NOT RMQ'
           python -m pip install pip --upgrade
           pip install wheel
