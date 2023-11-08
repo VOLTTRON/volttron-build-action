@@ -34,7 +34,7 @@ runs:
           echo 'Installing erlang'
           if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
             echo "Downloading erlang"
-            wget https://github.com/VOLTTRON/volttron-build-action/blob/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+            wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
           fi
           #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
           sudo dpkg -i esl-erlang_25.2-1~ubuntu~focal_amd64.deb
@@ -48,7 +48,7 @@ runs:
           echo 'Installing erlang'
           if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
             echo "Downloading erlang"
-            wget https://github.com/VOLTTRON/volttron-build-action/blob/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+            wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
           fi
           #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
           sudo dpkg -i esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
