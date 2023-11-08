@@ -32,8 +32,8 @@ runs:
           echo 'Clean older version of erlang-base'
           sudo apt-get purge -yf erlang-base
           echo 'Installing erlang'
-          wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
-          sudo dpkg -i esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+          #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+          sudo dpkg -i erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
         fi
         if [[ "$OS" == 'ubuntu-22.04' ]]; then
           echo 'Installing erlang dependencies'
@@ -42,8 +42,8 @@ runs:
           echo 'Clean older version of erlang-base'
           sudo apt-get purge -yf erlang-base
           echo 'Installing erlang'
-          wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
-          sudo dpkg -i esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+          #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+          sudo dpkg -i erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
         fi
       shell: bash
       env:
