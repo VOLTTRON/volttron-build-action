@@ -71,7 +71,7 @@ runs:
 
     - name: Install dependencies other than rmq
       run: |
-        if [[ ! -f "$FILE" ]] && [[ "$OS" != 'ubuntu-20.04' && "$OS" != 'ubuntu-22.04' ]]; then
+        if [[ ! -f "$FILE" ]] && [[ "$OS" == 'ubuntu-20.04' && "$OS" || 'ubuntu-22.04' ]]; then
           echo 'Installing all Volttron dependencies but NOT RMQ'
           python -m pip install pip --upgrade
           pip install wheel
