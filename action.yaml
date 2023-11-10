@@ -69,18 +69,18 @@ runs:
     #     OS: ${{ inputs.os }}
     #     FILE: env/bin/activate
 
-    # - name: Install dependencies other than rmq
-    #   run: |
-    #     if [[ ! -f "$FILE" ]] && [[ "$OS" != 'ubuntu-20.04' && "$OS" != 'ubuntu-22.04' ]]; then
-    #       echo 'Installing all Volttron dependencies but NOT RMQ'
-    #       python -m pip install pip --upgrade
-    #       pip install wheel
-    #       python bootstrap.py --all --force
-    #     fi
-    #   shell: bash
-    #   env:
-    #     OS: ${{ inputs.os }}
-    #     FILE: env/bin/activate
+    - name: Install dependencies other than rmq
+      run: |
+        if [[ ! -f "$FILE" ]] && [[ "$OS" != 'ubuntu-20.04' && "$OS" != 'ubuntu-22.04' ]]; then
+          echo 'Installing all Volttron dependencies but NOT RMQ'
+          python -m pip install pip --upgrade
+          pip install wheel
+          python bootstrap.py --all --force
+        fi
+      shell: bash
+      env:
+        OS: ${{ inputs.os }}
+        FILE: env/bin/activate
 
     - name: Install volttron
       run: |
