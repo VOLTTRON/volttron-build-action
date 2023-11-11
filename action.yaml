@@ -88,7 +88,7 @@ runs:
         pip install pytest-rerunfailures
         pip list
         echo "the test path $TEST_PATH and $TEST_OUTPUT_SUFFIX"
-        pytest --reruns 5 --reruns-delay 5 -rf -o junit_family=xunit2 \
+        pytest -rf -o junit_family=xunit2 \
             --junitxml=output/test-$TEST_OUTPUT_SUFFIX-${{ inputs.os }}-${{ inputs.python_version }}-results.xml \
             "$TEST_PATH"
       shell: bash
