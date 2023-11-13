@@ -23,51 +23,51 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Install Erlang for RabbitMQ
-    #   run: |
-    #     if [[ "$OS" == 'ubuntu-20.04' ]]; then
-    #       echo 'Installing erlang dependencies'
-    #       sudo apt-get update
-    #       sudo apt-get install -y gnupg apt-transport-https libsctp1
-    #       echo 'Clean older version of erlang-base'
-    #       sudo apt-get purge -yf erlang-base
-    #       echo 'Installing erlang'
-    #       if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
-    #         echo "Downloading erlang"
-    #         wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
-    #       fi
-    #       #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
-    #       sudo dpkg -i esl-erlang_25.2-1~ubuntu~focal_amd64.deb
-    #     fi
-    #     if [[ "$OS" == 'ubuntu-22.04' ]]; then
-    #       echo 'Installing erlang dependencies'
-    #       sudo apt-get update
-    #       sudo apt-get install -y gnupg apt-transport-https libsctp1
-    #       echo 'Clean older version of erlang-base'
-    #       sudo apt-get purge -yf erlang-base
-    #       echo 'Installing erlang'
-    #       if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
-    #         echo "Downloading erlang"
-    #         wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
-    #       fi
-    #       #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
-    #       sudo dpkg -i esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
-    #     fi
-    #   shell: bash
-    #   env:
-    #     OS: ${{ inputs.os }}
+    - name: Install Erlang for RabbitMQ
+      run: |
+        if [[ "$OS" == 'ubuntu-20.04' ]]; then
+          echo 'Installing erlang dependencies'
+          sudo apt-get update
+          sudo apt-get install -y gnupg apt-transport-https libsctp1
+          echo 'Clean older version of erlang-base'
+          sudo apt-get purge -yf erlang-base
+          echo 'Installing erlang'
+          if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
+            echo "Downloading erlang"
+            wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+          fi
+          #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+          sudo dpkg -i esl-erlang_25.2-1~ubuntu~focal_amd64.deb
+        fi
+        if [[ "$OS" == 'ubuntu-22.04' ]]; then
+          echo 'Installing erlang dependencies'
+          sudo apt-get update
+          sudo apt-get install -y gnupg apt-transport-https libsctp1
+          echo 'Clean older version of erlang-base'
+          sudo apt-get purge -yf erlang-base
+          echo 'Installing erlang'
+          if ! [ -f esl-erlang_25.2-1~ubuntu~focal_amd64.deb ]; then
+            echo "Downloading erlang"
+            wget https://github.com/VOLTTRON/volttron-build-action/raw/local-erlang/erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+          fi
+          #wget https://binaries2.erlang-solutions.com/ubuntu/pool/contrib/e/esl-erlang/esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+          sudo dpkg -i esl-erlang_25.2-1~ubuntu~jammy_amd64.deb
+        fi
+      shell: bash
+      env:
+        OS: ${{ inputs.os }}
 
-    # - name: Install dependencies including rmq
-    #   run: |
-    #     if [[ ! -f "$FILE" ]] && [[ "$OS" == 'ubuntu-20.04' || "$OS" == 'ubuntu-22.04' ]]; then
-    #       echo 'Installing all volttron dependencies and RMQ'
-    #       pip install wheel
-    #       python bootstrap.py --all --rabbitmq --force
-    #     fi
-    #   shell: bash
-    #   env:
-    #     OS: ${{ inputs.os }}
-    #     FILE: env/bin/activate
+    - name: Install dependencies including rmq
+      run: |
+        if [[ ! -f "$FILE" ]] && [[ "$OS" == 'ubuntu-20.04' || "$OS" == 'ubuntu-22.04' ]]; then
+          echo 'Installing all volttron dependencies and RMQ'
+          pip install wheel
+          python bootstrap.py --all --rabbitmq --force
+        fi
+      shell: bash
+      env:
+        OS: ${{ inputs.os }}
+        FILE: env/bin/activate
 
     - name: Install dependencies other than rmq
       run: |
