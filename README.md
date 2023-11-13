@@ -1,7 +1,6 @@
 # Run Volttron Tests
 
-A GitHub Action that sets up a Volttron test environment and runs a user-specified suite of VOLTTRON tests. 
-
+A GitHub Action that sets up a Volttron test environment and runs a user-specified suite of VOLTTRON tests.
 
 ## Example
 
@@ -42,17 +41,19 @@ jobs:
 ## Inputs
 
 ### `operating system (os)`
-The operating system used to run the tests. The os's are virtual environments provided by GitHub Actions. For a list of available environments, see: https://github.com/actions/virtual-environments
+
+The operating system used to run the tests. The os's are virtual environments provided by GitHub Actions. For a list of available environments, see: <https://github.com/actions/virtual-environments>
 
 ### `python version`
-The version of Python that will be used to setup and run the Volttron tests. To know more about testing different versions of Python in GitHub Actions, see: https://docs.github.com/en/actions/guides/building-and-testing-python
+
+The version of Python that will be used to setup and run the Volttron tests. To know more about testing different versions of Python in GitHub Actions, see: <https://docs.github.com/en/actions/guides/building-and-testing-python>
 
 ### `test_path`
 
 The path to a directory or file that contains Volttron-specific tests from the [Volttron repo](https://github.com/VOLTTRON/volttron).
 
-
 ### `test_output_suffix`
+
 The suffix to be appended to the name of the output file generated from running Volttron tests.
 
 ## License
